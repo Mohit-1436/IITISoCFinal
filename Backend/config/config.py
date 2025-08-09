@@ -6,34 +6,19 @@ from pathlib import Path
 
 class Config:
     """
-    Handles loading and accessing configuration settings from the .env file.
+    Handles loading and accessing configuration settings.
+    Prioritizes environment variables set directly in the system.
     """
     def __init__(self):
-        # Find the project root by looking for the .env file
-        self.project_dir = self._find_project_root()
-        self.dotenv_path = self.project_dir / '.env'
+        # Path to the .env file for local development
+        dotenv_path = Path(__file__).parent.parent / '.env'
         
-        if not self.dotenv_path.exists():
-            raise FileNotFoundError("Could not find .env file. Ensure it is in the project root.")
-            
-        load_dotenv(dotenv_path=self.dotenv_path)
-        
-        # Load all environment variables into a dictionary
-        self.settings = {key: value for key, value in os.environ.items()}
+        # Load environment variables from .env file only if it exists
+        if dotenv_path.exists():
+            load_dotenv(dotenv_path=dotenv_path)
 
-    def _find_project_root(self, current_path=None):
-        """Recursively find the project root by looking for the .env file."""
-        if current_path is None:
-            current_path = Path.cwd()
-        
-        if (current_path / '.env').exists():
-            return current_path
-        
-        # Stop if we have reached the filesystem root
-        if current_path.parent == current_path:
-            return None
-            
-        return self._find_project_root(current_path.parent)
+        # Load all environment variables from the system into a dictionary
+        self.settings = {key: value for key, value in os.environ.items()}
 
     def get(self, key, default=None):
         """
@@ -57,6 +42,7 @@ class Config:
         
         if missing_keys:
             print(f"❌ Missing required configuration keys: {', '.join(missing_keys)}")
+            # In a production environment, you might want to raise an exception here.
             return False
             
         print("All essential keys found.")

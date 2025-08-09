@@ -132,7 +132,7 @@ if(showLoginBtn) {
 // --- Portfolio Dashboard App - 2025 Advanced Features with API Integration ---
 
 // API Configuration
-const API_BASE_URL = 'http://localhost:8000';        // FastAPI backend (portfolio, market, etc.)
+const API_BASE_URL = 'https://iitisocfinal.onrender.com/api/data';        // FastAPI backend (portfolio, market, etc.)
 const FLASK_BASE_URL = 'http://localhost:5000';      // Flask FinBERT sentiment backend
 
 // Application Data
@@ -1348,3 +1348,4 @@ class DashboardStockChart {
                 dashboardStockChart = new DashboardStockChart();
             }, 1000);
         }
+

@@ -133,7 +133,7 @@ if(showLoginBtn) {
 
 // API Configuration
 const API_BASE_URL = 'https://iitisocfinal.onrender.com/api/data';        // FastAPI backend (portfolio, market, etc.)
-const FLASK_BASE_URL = 'http://localhost:5000';      // Flask FinBERT sentiment backend
+const FLASK_BASE_URL = 'https://iitisocfinal.onrender.com/api/data';      // Flask FinBERT sentiment backend
 
 // Application Data
 let portfolioData = {};
@@ -1348,4 +1348,5 @@ class DashboardStockChart {
                 dashboardStockChart = new DashboardStockChart();
             }, 1000);
         }
+
 

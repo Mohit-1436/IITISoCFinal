@@ -132,8 +132,8 @@ if(showLoginBtn) {
 // --- Portfolio Dashboard App - 2025 Advanced Features with API Integration ---
 
 // API Configuration
-const API_BASE_URL = 'https://iitisocfinal.onrender.com/api/data';        // FastAPI backend (portfolio, market, etc.)
-const FLASK_BASE_URL = 'https://iitisocfinal.onrender.com/api/data';      // Flask FinBERT sentiment backend
+const API_BASE_URL = 'https://iitisocfinal.onrender.com';        // FastAPI backend (portfolio, market, etc.)
+const FLASK_BASE_URL = 'https://iitisocfinal.onrender.com';      // Flask FinBERT sentiment backend
 
 // Application Data
 let portfolioData = {};
@@ -1348,5 +1348,6 @@ class DashboardStockChart {
                 dashboardStockChart = new DashboardStockChart();
             }, 1000);
         }
+
 
 
